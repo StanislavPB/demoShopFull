@@ -58,7 +58,10 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RestException.class)
-    public ResponseEntity<String> handlerRestException(RestException e){
-        return new 
+    public ResponseEntity<Map<String, String>> handlerRestException(RestException e){
+        Map<String, String> response = new HashMap<>();
+        response.put("message", e.getMessage());
+        response.put("error", "Exception Type: " + e.getClass().getSimpleName());
+        return new ResponseEntity<>(response,HttpStatus.CONFLICT);
     }
 }

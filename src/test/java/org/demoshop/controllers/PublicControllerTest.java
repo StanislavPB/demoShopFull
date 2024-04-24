@@ -127,5 +127,22 @@ class PublicControllerTest {
     }
 
     @Test
+    public void testRegisterForExistEmail() throws Exception {
+        String newUserJson = """
+                {
+                    "firstName": "user1",
+                    "lastName": "user1",
+                    "email": "user1@gmail.com",
+                    "password":"Password123!"
+                    }
+                """;
+
+        mockMvc.perform(post("/api/public/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(newUserJson))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.error").value("Exception Type: RestException"));
+
+    }
 
 }
