@@ -1,9 +1,9 @@
-FROM docker.io/maven:3.8.3-openjdk-17 AS build
+FROM docker.io/maven:4.0.0-openjdk-21 AS build
 COPY . /home/src
 WORKDIR /home/src
 RUN mvn clean package -DskipTests
 
-FROM openjdk:17-slim
+FROM openjdk:21
 EXPOSE 8080
 
 RUN mkdir /app
