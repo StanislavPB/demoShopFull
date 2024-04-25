@@ -1,9 +1,9 @@
-FROM docker.io/maven:4.0.0-openjdk-21 AS build
+FROM docker.io/maven:3.9.6-eclipse-temurin-21-alpine AS build
 COPY . /home/src
 WORKDIR /home/src
 RUN mvn clean package -DskipTests
 
-FROM openjdk:21
+FROM openjdk:21-slim
 EXPOSE 8080
 
 RUN mkdir /app
