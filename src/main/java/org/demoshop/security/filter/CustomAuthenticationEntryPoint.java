@@ -18,6 +18,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException {
+
         HttpStatus status = HttpStatus.UNAUTHORIZED;
         String message = "Unauthorized: " + e.getMessage();
 

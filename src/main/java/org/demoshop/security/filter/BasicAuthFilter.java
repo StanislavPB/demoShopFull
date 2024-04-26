@@ -41,6 +41,11 @@ public class BasicAuthFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
+        if (request.getRequestURI().startsWith("/swagger") || request.getRequestURI().startsWith("/v3")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
         String header = request.getHeader("Authorization");
 
         if (header != null && header.startsWith("Basic ")) {
