@@ -1,6 +1,9 @@
+
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
+    url: jdbc:mysql://localhost:3306/db35shop
+    username: root
+    password: root2023
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -25,3 +28,5 @@ spring:
 jwt:
   secret: 984hg493gh0439rthr0429uruj2309yh937gc763fe87t3f89723gf
   lifetime: 60000
+
+
